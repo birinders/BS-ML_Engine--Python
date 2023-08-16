@@ -1,2 +1,2 @@
-# BS-ML_Engine--Python
-A machine learning engine, implemented from the ground up in python.
+# BS-ML Engine--Python
+## Getting Started
