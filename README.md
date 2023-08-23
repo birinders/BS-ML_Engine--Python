@@ -40,15 +40,21 @@ The layer takes in following arguments-<br><br>
 <h3>2. Activation Layers</h3>
 
 These are declared under the ```activation_funcs.py``` file. They are usually placed after Dense layers, and act as data threholds before the next layer. They require no additional arguments, and automatically inherit their shapes from the previous layer. There are currently 2 activation functions-<br>
-1. ReLU<br>
+<ol>
+<li><strong>ReLU</strong><br>
    Added to the model as follows-<br>
-   - ```my_model.add(activation_funcs.Activation_ReLU())```
-   - Headless- ```activation1 = activation_funcs.Activation_ReLU()```
-
-2. Softmax<br>
+   <ul>
+   <li><code>my_model.add(activation_funcs.Activation_ReLU())</code></li>
+   <li>Headless- <code>activation1 = activation_funcs.Activation_ReLU()</code></li>
+   </ul>
+<br><br>
+<li><strong>Softmax</strong><br>
    Added as follows-<br>
-   - ```my_model.add(activation_funcs.Activation_Softmax())```
-   - Headless- ```activation_softmax = activation_funcs.Activation_Softmax()```
+   <ul>
+   <li><code>my_model.add(activation_funcs.Activation_Softmax())</code>
+   <li>Headless- <code>activation_softmax = activation_funcs.Activation_Softmax()</code>
+   </li>
+</ol>
 
 <h3>3. Dropout Layers</h3>
 
@@ -71,29 +77,108 @@ CCE (Softmax) loss is intialized as-
 
 Optimizers are declared under the ```optimizers.py``` file, and are responsible for adjusting the Dense Layer's weights and biases according to the selected algorithm once the backward propagation is complete.<br><br>
 There are corrently 4 types of optimizers available-
-1. Adam
-   Adam takes in 5 arguments-<br>
-   ```learning_rate=0.001, decay=0.0, epsilon=1e-7, beta_1=0.9, beta_2=0.999```<br><br>
-   1. learning rate- The step size taken while moving towards the minimum value for a loss function.<br>
-   2. decay- The amount by which the learning rate decreases at every iteration (The net subtraction decreases inversely to the iteration number)<br>
-   3. epsilon- A small value for numerical stability by preventing divide by zero errors.<br>
-   4. beta_1- Exponential decay rate for the first moment estimates.
-   5. beta_2- Exponential decay rate for the second moment estimates (uncentered variance).
+<ol>
+<li><strong>Adam</strong><br>
+   Adam optimizer takes in 5 arguments-<br>
+   <code>learning_rate=0.001, decay=0.0, epsilon=1e-7, beta_1=0.9, beta_2=0.999</code><br><br>
+   <ol>
+   <li>learning rate- The step size taken while moving towards the minimum value for a loss function.<br>
+   <li>decay- The amount by which the learning rate decreases at every iteration (The net subtraction decreases inversely to the iteration number)<br>
+   <li>epsilon- A small value to prevent divide by zero errors.<br>
+   <li>beta_1- Exponential decay rate for the first moment estimates.
+   <li>eta_2- Exponential decay rate for the second moment estimates (uncentered variance).
+   </ol>
 
    It is initialized as-
-   - ```my_model.set_loss_opt(loss_fxn = loss_fxn, optimizer = optimizers.Optimizer_Adam(learning_rate=0.05, decay=5e-5))```
-   - Headless- ```optimizer = optimizers.Optimizer_Adam(learning_rate=0.05, decay=5e-5)```
+   <ul>
+   <li><code>my_model.set_loss_opt(loss_fxn = loss_fxn, optimizer = optimizers.Optimizer_Adam(learning_rate=0.05, decay=5e-5))</code>
+   <li>Headless- <code>optimizer = optimizers.Optimizer_Adam(learning_rate=0.05, decay=5e-5)</code>
+   </ul>
+   
+<br>
+<li><strong>AdaGrad</strong><br>
+   The AdaGrad optimizer takes in 3 arguments-<br>
+   <code>learning_rate=0.001, decay=0.0, epsilon=1e-7</code><br><br>
+   <ol>
+   <li>learning rate- The step size taken while moving towards the minimum value for a loss function.<br>
+   <li>decay- The amount by which the learning rate decreases at every iteration (The net subtraction decreases inversely to the iteration number)<br>
+   <li>epsilon- A small value to prevent divide by zero errors.<br>
+   </ol>
+   
+   It is initialized as-
+   <ul>
+   <li><code>my_model.set_loss_opt(loss_fxn = loss_fxn, optimizer = optimizers.Optimizer_AdaGrad(learning_rate=0.01, decay=5e-5))</code>
+   <li>Headless- <code>optimizer = optimizers.Optimizer_AdaGrad(learning_rate=0.05, decay=5e-5)</code>
+   </ul>
 
-2. 
+<br>
+<li><strong>SGD (Stochaistic Gradient Descent)</strong><br>
+   The AdaGrad optimizer takes in 3 arguments-<br>
+   <code>learning_rate=1.0, decay=0.0, momentum=0.0</code><br><br>
+   <ol>
+   <li>learning rate- The step size taken while moving towards the minimum value for a loss function.<br>
+   <li>decay- The amount by which the learning rate decreases at every iteration (The net subtraction decreases inversely to the iteration number)<br>
+   <li>momentum- Momentum while moving towards a local minima to assist in attaining the global minima.<br>
+   </ol>
+   
+   It is initialized as-
+   <ul>
+   <li><code>my_model.set_loss_opt(loss_fxn = loss_fxn, optimizer = optimizers.Optimizer_SGD(learning_rate=0.5, decay=1e-3, momentum = 0.5))</code>
+   <li>Headless- <code>optimizer = optimizers.Optimizer_SGD(learning_rate=0.5, decay=1e-3, momentum = 0.5)</code>
+   </ul>
 
+<br>
+<li><strong>RMSProp</strong><br>
+   The RMSProp optimizer takes in 4 arguments-<br>
+   <code>learning_rate=0.001, decay=0.0, epsilon=1e-7, rho=0.9</code><br><br>
+   <ol>
+   <li>learning rate- The step size taken while moving towards the minimum value for a loss function.<br>
+   <li>decay- The amount by which the learning rate decreases at every iteration (The net subtraction decreases inversely to the iteration number)<br>
+   <li>epsilon- A small value to prevent divide by zero errors.<br>
+   <li>rho- Controls the moving average decay rate of the squared gradients.<br>
+   </ol>
+   
+   It is initialized as-
+   <ul>
+   <li><code>my_model.set_loss_opt(loss_fxn = loss_fxn, optimizer = optimizers.Optimizer_RMSProp(learning_rate=0.5, decay=1e-3))</code>
+   <li>Headless- <code>optimizer = optimizers.Optimizer_SGD(learning_rate=0.5, decay=1e-3)</code>
+   </ul>
 
+</ol>
 
+<h3>6. Special Layers-</h3>
+<ol>
+<li><strong>Softmax Activation + CCE Loss</strong><br>
+   The Softmax activation function and the Categorical Cross Entropy loss functions are 2 parts of the same equation. Hence, they can be combined into a single step for a nearly 7x more efficient combination, as they both assist in solving each other. This combined layer is declared in the <code>activation_funcs.py</code> file, and can be initiated as follows-<br><br>
 
+   <ul>
+   <li>Headless- <code>loss_activation = activation_funcs.Activation_Loss_Softmax()</code><br>
+   <li> The way to include both the final activation function and the loss function in a single step in the Model object is under development.<br>
+   It is scheduled for release in the next update.
+   </ul>
+   
+</ol>
 
+<h3>7. Finalizing and training the Model object-</h3>
 
+You can call the ```finalize()``` method on the Model object to finalize it for training. This step will hook all the layers and chain them in a doubly linked list, so you can efficiently transfer data between adjacent layers by referencing them as ```layer.next``` or ```layer.prev```. This step also distinguishes the trainable layers (dense layers) from the non trainable layers (activation, dropout, loss) to pass them to the optimizers.
 
+- Note- There is also a ```hook_layers()``` method, which is a subset of the ```finalize()``` method. The latter has functionally completely replaced ```hook_layers()```, and the old method will be deprecated in a future update.
 
+Finally, you can call the ```train``` method and pass it the following arguments to start the training process-<br>
+```X:input_data, y:input_labels, epochs=1, print_every=1```.<br>
+- Note- ```epochs``` and ```print_every``` are madatory keyword only arguments, and cannot be passed positionally.
 
+<h3>7.1 Checking model accuracy-</h3>
 
+The ```metrics.py``` file contains the necessary functions required to calculate accuracy of data.<br>
+It can be set up as follows-<br>
 
+<ol>
+<li>Create a <code>accuracy</code> object as follows-<br>
+<code>accuracy_F = metrics.PerformanceMetrics()</code><br><br>
+<li>Call the <code>accuracy</code> method on this object by passing in <code>y_pred, y_true</code> as follows-<br>
+<code>acc = accuracy_F.accuracy(y_pred, y_true)</code>
+</ol>
 
+The accuracy function automatically accounts for both dense and one-hot encoded predictions.
