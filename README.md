@@ -1,9 +1,14 @@
 # BS-ML Engine--Python
 ## Getting Started-
-Run ```pip install bs-ml-alpha-0.0.1```<br>
-Latest python version recommended for best performance.
+- Run ```pip install bs-ml-alpha-0.0.1```<br>
+(Latest python version recommended for best performance.)
 
-- Note- Since this project is still in very early stages of development, there is no comprehensive documentation available yet. Since the API is constantly changing, it is only viable to document the API after the project is out of its ```alpha``` status.
+-----------
+
+- Note- Since this project is still in very early stages of development, the API is constantly maturing and evolving. Hence, there is no comprehensive documentation available yet.<br><br>
+Since the API is constantly changing, it is only viable to document it once the project is out of its ```alpha``` status.
+
+----------
 
 BS-ML Engine is a Machine Learning Engine I've developed from the ground up in Python. This project has truly been a passion project of mine, and is under active development. <br><br>
 This project was initiaited for one major goal- to demystify the field of Machine Learning for both me, and the user. That is why, it has been made from the ground up with no external dependencies, other than the very basic [NumPy](https://numpy.org/) library just to accelerate the mathematical computations.
