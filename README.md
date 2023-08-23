@@ -181,4 +181,10 @@ It can be set up as follows-<br>
 <code>acc = accuracy_F.accuracy(y_pred, y_true)</code>
 </ol>
 
-The accuracy function automatically accounts for both dense and one-hot encoded predictions.
+The accuracy function automatically accounts for both prediction matrices and one-hot encoded predictions.
+
+### Features under development-
+1. Convolutional Layers for image data.
+2. Regression support.
+3. A more streamlined and universal accuracy module.
+4. A better way to acquire predictions from a trained dataset.
